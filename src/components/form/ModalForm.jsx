@@ -7,20 +7,29 @@ import Col from 'react-bootstrap/Col';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+const initialValues = {
+
+  email: '',
+  fullname: '',
+  username: '',
+  password: '',
+  phonenumber: '',
+};
+
 export default function ModalForm() {
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
+
   const handleShow = () => setShow(true);
+
   const handleAlert = () => {
     setShow(false);
-    alert(`${formik.values.fullname}\n${formik.values.username}\n${formik.values.password}\n${formik.values.phonenumber}\n${formik.values.email}`);
-  };
-  const initialValues = {
-    email: '',
-    fullname: '',
-    username: '',
-    password: '',
-    phonenumber: '',
+    alert(`${formik.values.fullname}
+    \n${formik.values.username}
+    \n${formik.values.password}
+    \n${formik.values.phonenumber}
+    \n${formik.values.email}`);
   };
 
   const onSubmit = (values) => {
@@ -29,19 +38,32 @@ export default function ModalForm() {
 
   const validationSchema = Yup.object({
 
-    fullname: Yup.string().required('Required').matches(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/, 'only contain character').max(40),
-    username: Yup.string().required('Required').matches(/^[A-Za-z0-9_-]*$/, 'only contain character and number').max(25)
+    fullname: Yup.string()
+      .required('Required')
+      .matches(/^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/, 'only contain character')
+      .max(40),
+    username: Yup.string()
+      .required('Required')
+      .matches(/^[A-Za-z0-9_-]*$/, 'only contain character and number')
+      .max(25)
       .min(8),
-    password: Yup.string().required('Required').matches(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/, 'must be one contain number and character and dont use special character').min(8)
+    password: Yup.string()
+      .required('Required')
+      .matches(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/, 'must be one contain number and character and dont use special character')
+      .min(8)
       .max(25),
-    phonenumber: Yup.string().required('Required').matches(/^[0-9]{9,10}$/, 'phone numbers is not true'),
-    email: Yup.string().email('Invalid Email format').required('Required!'),
+    phonenumber: Yup.string()
+      .required('Required')
+      .matches(/^[0-9]{9,10}$/, 'phone numbers is not true'),
+    email: Yup.string()
+      .email('Invalid Email format')
+      .required('Required!'),
   });
+
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
-    // validate
   });
   return (
     <>

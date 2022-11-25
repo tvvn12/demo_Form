@@ -4,7 +4,6 @@ import Modal from './ModalForm';
 function Form() {
   return (
     <Modal />
-
   );
 }
 
