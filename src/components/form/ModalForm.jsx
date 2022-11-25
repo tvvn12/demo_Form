@@ -74,14 +74,15 @@ export default function ModalForm() {
       </Button>
 
       <Modal backdrop="static" show={show} onHide={handleClose}>
+
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
           <Row>
             <Col xs={12} md={8}>
               {/* eslint-disable max-len */}
-
               <Form>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                   <Form.Label>Full Name</Form.Label>
@@ -92,9 +93,9 @@ export default function ModalForm() {
                     name="fullname"
                     type="text"
                     placeholder="Lê Tường Vinh"
-
                   />
                 </Form.Group>
+
                 {formik.touched.fullname && formik.errors.fullname ? <div className="text-danger">{formik.errors.fullname}</div> : null}
 
                 {/* username */}
@@ -107,9 +108,9 @@ export default function ModalForm() {
                     name="username"
                     type="text"
                     placeholder="pro_player_123"
-
                   />
                 </Form.Group>
+
                 {formik.touched.username && formik.errors.username ? <div className="text-danger">{formik.errors.username}</div> : null}
 
                 {/* password */}
@@ -122,9 +123,9 @@ export default function ModalForm() {
                     name="password"
                     type="text"
                     placeholder=""
-
                   />
                 </Form.Group>
+
                 {formik.touched.password && formik.errors.password ? <div className="text-danger">{formik.errors.password}</div> : null}
 
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -136,9 +137,9 @@ export default function ModalForm() {
                     name="phonenumber"
                     type="text"
                     placeholder="0909080706"
-
                   />
                 </Form.Group>
+
                 {formik.touched.phonenumber && formik.errors.phonenumber ? <div className="text-danger">{formik.errors.phonenumber}</div> : null}
 
                 {/* email */}
@@ -151,30 +152,40 @@ export default function ModalForm() {
                     name="email"
                     type="email"
                     placeholder="name@example.com"
-
                   />
                 </Form.Group>
+
                 {formik.touched.email && formik.errors.email ? <div className="text-danger">{formik.errors.email}</div> : null}
 
               </Form>
-
             </Col>
-
           </Row>
 
         </Modal.Body>
+
         <Modal.Footer>
+
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {formik.values.email !== '' && !formik.errors.email && formik.values.fullname !== '' && !formik.errors.fullname && formik.values.username !== '' && !formik.errors.username
-          && formik.values.password !== '' && !formik.errors.password && formik.values.phonenumber !== '' && !formik.errors.phonenumber ? (
+
+          {formik.values.email !== ''
+          && !formik.errors.email
+          && formik.values.fullname !== ''
+          && !formik.errors.fullname
+          && formik.values.username !== ''
+          && !formik.errors.username
+          && formik.values.password !== ''
+          && !formik.errors.password
+          && formik.values.phonenumber !== ''
+          && !formik.errors.phonenumber ? (
             <Button variant="primary" onClick={handleAlert}>
               Save Changes
             </Button>
             ) : null}
 
         </Modal.Footer>
+
       </Modal>
     </>
   );
