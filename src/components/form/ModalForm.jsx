@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -67,7 +69,6 @@ export default function ModalForm() {
   });
   return (
     <>
-
       <Button variant="primary" onClick={handleShow}>
         Validate Form
       </Button>
